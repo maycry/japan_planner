@@ -863,381 +863,351 @@
   }
 }
 
-/* Mobile styles for generated itinerary */
-@media (max-width: 768px) {
-  .generated-itinerary-content {
-    padding: 1rem;
-    max-height: 400px;
-  }
-
-  .generated-itinerary-header {
-    padding: 1rem;
-  }
-
-  .generated-itinerary-title {
-    font-size: 1.25rem;
-  }
-
-  .itinerary-city {
-    font-size: 1.125rem;
-  }
-
-  .itinerary-day {
-    font-size: 1rem;
-  }
-
-  .itinerary-activity {
-    margin-left: 0.5rem;
-    padding-left: 0.75rem;
-  }
-}
-
-/* Generated Itinerary Step Styles */
-.formatted-itinerary {
-  line-height: 1.6;
-}
-
-.itinerary-title-main {
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: #1f2937;
-  margin-bottom: 2rem;
-  text-align: center;
-  padding: 1rem;
-  background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
-  border-radius: 12px;
-  border: 1px solid #d1d5db;
-}
-
-.city-section {
-  margin-bottom: 2.5rem;
-}
-
-.city-section:last-child {
-  margin-bottom: 0;
-}
-
-.day-section {
-  margin-bottom: 1.5rem;
-  padding-left: 1rem;
-}
-
-.day-section:last-child {
-  margin-bottom: 0;
-}
-
-.activity-time {
-  font-weight: 600;
-  color: #059669;
-  margin-right: 0.5rem;
-}
-
-.activity-description {
-  font-size: 0.875rem;
-  color: #6b7280;
-  margin-top: 0.25rem;
-  margin-left: 1rem;
-  font-style: italic;
-}
-
-/* Mobile styles for generated itinerary step */
-@media (max-width: 768px) {
-  .itinerary-title-main {
-    font-size: 1.5rem;
-    padding: 0.75rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .city-section {
-    margin-bottom: 2rem;
-  }
-
-  .day-section {
-    margin-bottom: 1.25rem;
-    padding-left: 0.5rem;
-  }
-
-  .activity-description {
-    margin-left: 0.5rem;
-  }
-}
-
-/* Timeline Itinerary Styles */
-.timeline-itinerary {
-  padding: 0;
-  margin: 0;
-}
-
-.main-itinerary-title {
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: #1f2937;
-  margin-bottom: 2rem;
-  text-align: center;
-  padding: 1rem;
-  background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
-  border-radius: 12px;
-  border: 1px solid #d1d5db;
-}
-
-.timeline-city-section {
-  margin-bottom: 3rem;
-}
-
-.timeline-city-section:last-child {
-  margin-bottom: 0;
-}
-
-.timeline-city-title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #1f2937;
-  margin-bottom: 1.5rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid #e5e7eb;
-}
-
-.timeline-days-container {
-  margin-left: 1rem;
-}
-
-.timeline-day-section {
-  margin-bottom: 2rem;
-}
-
-.timeline-day-section:last-child {
-  margin-bottom: 0;
-}
-
-.timeline-day-title {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #374151;
-  margin-bottom: 1rem;
-  padding-left: 0.5rem;
-}
-
-.timeline-activities {
+/* Landing Page Styles */
+.landing-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   position: relative;
-  margin-left: 1rem;
+  overflow-x: hidden;
 }
 
-.timeline-activity-card {
+/* Header */
+.landing-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  padding: 1rem 0;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
   display: flex;
-  align-items: flex-start;
-  margin-bottom: 1.5rem;
-  position: relative;
-}
-
-.timeline-activity-card:last-child {
-  margin-bottom: 0;
-}
-
-.timeline-marker {
-  position: relative;
-  margin-right: 1rem;
-  display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  flex-shrink: 0;
 }
 
-.timeline-dot {
-  width: 12px;
-  height: 12px;
-  background: #3b82f6;
-  border-radius: 50%;
-  border: 3px solid white;
-  box-shadow: 0 0 0 2px #3b82f6;
+.logo-placeholder {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.logo-icon {
+  font-size: 1.5rem;
+}
+
+.header-nav {
+  display: flex;
+  gap: 2rem;
+}
+
+.header-nav a {
+  color: #666;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.header-nav a:hover {
+  color: #667eea;
+}
+
+/* Hero Section */
+.hero-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   position: relative;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 2rem;
+}
+
+.hero-content {
+  max-width: 800px;
+  color: white;
   z-index: 2;
 }
 
-.timeline-line {
-  width: 2px;
-  height: 40px;
-  background: #e5e7eb;
-  margin-top: 8px;
-  position: relative;
-  z-index: 1;
+.hero-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
 }
 
-.activity-card-content {
+.hero-title-accent {
+  background: linear-gradient(45deg, #ffd700, #ff6b6b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  margin-bottom: 3rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(45deg, #ff6b6b, #ffd700);
+  color: white;
+  border: none;
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.cta-button.secondary {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.hero-stats {
   display: flex;
-  gap: 1rem;
-  align-items: flex-start;
-  background: white;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  padding: 1rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.2s, transform 0.2s;
-  flex: 1;
-  min-width: 0;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 4rem;
+  flex-wrap: wrap;
 }
 
-.activity-card-content:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  transform: translateY(-2px);
+.stat-item {
+  text-align: center;
 }
 
-.activity-photo {
-  width: 100px;
-  height: 100px;
-  border-radius: 8px;
+.stat-number {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Photo Carousel Section */
+.photo-carousel-section {
+  padding: 4rem 0;
+  background: #f8f9fa;
   overflow: hidden;
-  flex-shrink: 0;
-  margin: 0;
-  background: #f3f4f6;
 }
 
-.activity-photo img {
+.carousel-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 3rem;
+}
+
+.carousel-container {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.carousel-slide {
+  padding: 0 1rem;
+}
+
+.slide-image-container {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.slide-image-container:hover {
+  transform: translateY(-5px);
+}
+
+.slide-image {
   width: 100%;
-  height: 100%;
+  height: 300px;
   object-fit: cover;
   display: block;
 }
 
-.activity-info {
-  flex: 1;
-  min-width: 0;
+.slide-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  padding: 2rem 1.5rem 1.5rem;
+  color: white;
 }
 
-.activity-header {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.activity-time {
-  font-weight: 600;
-  color: #059669;
-  font-size: 0.875rem;
-}
-
-.activity-type {
-  color: #6b7280;
-  border-radius: 6px;
-  font-size: 0.75rem;
+.slide-caption {
+  margin: 0;
   font-weight: 500;
-  text-align: left;
-  margin: 0;
+  font-size: 1rem;
 }
 
-.activity-name {
-  font-size: 1.1rem;
+/* Features Section */
+.features-section {
+  padding: 6rem 2rem;
+  background: white;
+}
+
+.features-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.features-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 4rem;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 3rem;
+}
+
+.feature-card {
+  text-align: center;
+  padding: 2rem;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.feature-icon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.feature-card h3 {
+  font-size: 1.5rem;
   font-weight: 600;
-  color: #1f2937;
-  margin-bottom: 0.5rem;
-  line-height: 1.3;
-  text-align: left;
+  color: #333;
+  margin-bottom: 1rem;
 }
 
-.activity-description {
-  font-size: 0.875rem;
-  color: #6b7280;
-  line-height: 1.4;
-  margin: 0;
-  text-align: left;
+.feature-card p {
+  color: #666;
+  line-height: 1.6;
 }
 
-/* Hide summary cards and border for timeline view */
-.itinerary-container .itinerary-summary {
-  display: none;
+/* CTA Footer */
+.cta-footer {
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  text-align: center;
+  color: white;
 }
 
-.itinerary-container .generated-itinerary {
-  border: none;
-  background: transparent;
-  margin: 0;
+.cta-footer-content h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
 }
 
-.itinerary-container .generated-itinerary-header {
-  display: none;
+.cta-footer-content p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.itinerary-container .generated-itinerary-content {
-  padding: 0;
-  max-height: none;
+/* Slick Carousel Overrides */
+.slick-slider {
+  margin: 0 -1rem;
+}
+
+.slick-list {
   overflow: visible;
 }
 
-/* Mobile styles for timeline */
+.slick-track {
+  display: flex;
+  align-items: center;
+}
+
+.slick-slide {
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.slick-slide:hover {
+  opacity: 1;
+}
+
+/* Mobile Responsiveness */
 @media (max-width: 768px) {
-  .main-itinerary-title {
-    font-size: 1.5rem;
-    padding: 0.75rem;
-    margin-bottom: 1.5rem;
+  .header-nav {
+    display: none;
   }
-
-  .timeline-city-title {
-    font-size: 1.25rem;
-    margin-bottom: 1rem;
+  
+  .hero-stats {
+    gap: 2rem;
   }
-
-  .timeline-days-container {
-    margin-left: 0.5rem;
+  
+  .stat-item {
+    flex: 1;
+    min-width: 120px;
   }
-
-  .timeline-day-title {
-    font-size: 1.125rem;
-    margin-bottom: 0.75rem;
+  
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
   }
-
-  .timeline-activities {
-    margin-left: 0.5rem;
+  
+  .carousel-title {
+    font-size: 2rem;
   }
-
-  .timeline-marker {
-    margin-right: 0.75rem;
+  
+  .features-title {
+    font-size: 2rem;
   }
-
-  .timeline-dot {
-    width: 10px;
-    height: 10px;
-    border: 2px solid white;
-    box-shadow: 0 0 0 2px #3b82f6;
-  }
-
-  .timeline-line {
-    height: 30px;
-    margin-top: 6px;
-  }
-
-  .activity-card-content {
-    padding: 0.75rem;
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .activity-photo {
-    width: 100%;
-    height: 120px;
-    margin-right: 0;
-    margin-bottom: 0.75rem;
-  }
-
-  .activity-header {
-    justify-content: flex-start;
-  }
-
-  .activity-name {
-    font-size: 1rem;
-  }
-
-  .activity-description {
-    font-size: 0.8rem;
-  }
-
-  .timeline-city-section {
-    margin-bottom: 2rem;
-  }
-
-  .timeline-day-section {
-    margin-bottom: 1.5rem;
-  }
-
-  .timeline-activity-card {
-    margin-bottom: 1rem;
+  
+  .cta-footer-content h2 {
+    font-size: 2rem;
   }
 }
+
+/* ...existing timeline and other styles... */

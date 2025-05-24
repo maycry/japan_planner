@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import LandingPage from "./components/LandingPage";
 import PreferencesStep from "./components/PreferencesStep";
 import CitiesStep from "./components/CitiesStep";
 import ActivitiesStep from "./components/ActivitiesStep";
@@ -23,7 +24,7 @@ const japanCities = [
 ];
 
 function App() {
-  const [currentStep, setCurrentStep] = useState(1);
+  const [currentStep, setCurrentStep] = useState(0); // Start at 0 for landing page
   const [selectedPreferences, setSelectedPreferences] = useState([]);
   const [selectedCities, setSelectedCities] = useState([
     {
@@ -161,6 +162,19 @@ function App() {
       })
     );
   };
+
+  // Handle landing page start planning
+  const handleStartPlanning = () => {
+    setCurrentStep(1);
+  };
+
+  if (currentStep === 0) {
+    return (
+      <div className="app">
+        <LandingPage onStartPlanning={handleStartPlanning} />
+      </div>
+    );
+  }
 
   if (currentStep === 1) {
     return (
