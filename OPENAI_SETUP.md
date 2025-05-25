@@ -40,6 +40,6 @@
 - **Estimated Cost**: ~$0.01-0.03 per itinerary generation
 - **Alternative**: Change to `gpt-4` in `/src/config/openai.js` for higher quality (higher cost)
 
-## Fallback Behavior
+## Requirements
 
-If no API key is configured, the app will automatically use a mock response so you can still test the UI functionality.
+The OpenAI API key is **required** for the app to function. Without a valid API key, itinerary generation will fail.
