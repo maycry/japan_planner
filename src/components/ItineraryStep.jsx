@@ -108,7 +108,7 @@ Requirements:
 - Make sure each day has a reasonable number of activities (2-4 per day)
 - Consider geographical proximity when scheduling activities within a day
 - Use time slots: Morning, Afternoon, Evening
-- For each city, include exactly 7 hotels ranging from budget to luxury
+- For each city, include exactly 4 hotels ranging from budget to luxury
 - Hotels should have: name, priceRange (e.g. "$50-100/night"), category (Budget/Mid-range/Luxury), and short description
 - Include a variety of hotel types: hostels, business hotels, ryokans, luxury resorts, etc.
 - Return ONLY valid JSON, no additional text or formatting`;
