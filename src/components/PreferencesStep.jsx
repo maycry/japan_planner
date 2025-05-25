@@ -1,20 +1,21 @@
 import React from "react";
 
 const travelPreferences = [
-  "Japanese Cuisine",
-  "Museums",
-  "Onsen (Hot Springs)",
-  "Temples & Shrines",
-  "Traditional Arts",
-  "Modern Architecture",
-  "Shopping",
-  "Nature & Hiking",
-  "Nightlife",
-  "Photography",
-  "Local Markets",
-  "Cherry Blossoms",
-  "Pop Culture",
-  "Historical Sites",
+  "🍣 Japanese Cuisine",
+  "🏛️ Museums",
+  "♨️ Onsen (Hot Springs)",
+  "⛩️ Temples & Shrines",
+  "🎭 Traditional Arts",
+  "🏙️ Modern Architecture",
+  "🛍️ Shopping",
+  "🌲 Nature & Hiking",
+  "🌃 Nightlife",
+  "📸 Photography",
+  "🏮 Local Markets",
+  "🌸 Cherry Blossoms",
+  "🎮 Pop Culture",
+  "🏯 Historical Sites",
+  "👘 Cultural Experiences",
 ];
 
 function PreferencesStep({
