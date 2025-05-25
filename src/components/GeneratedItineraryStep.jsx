@@ -1,4 +1,5 @@
 import React from "react";
+import ItineraryMap from "./ItineraryMap";
 
 // Helper function to get activity photos
 const getActivityPhotoByType = (name, type) => {
@@ -265,8 +266,9 @@ function GeneratedItineraryStep({
   };
 
   return (
-    <div className="itinerary-container">
-      <div className="itinerary-content">
+    <div className="itinerary-container split-screen">
+      {/* Left side - Itinerary content */}
+      <div className="itinerary-content-left">
         <h1 className="itinerary-title">Your Personalized Japan Itinerary</h1>
         <p className="itinerary-subtitle">
           AI-generated travel plan based on your preferences
@@ -313,6 +315,16 @@ function GeneratedItineraryStep({
           <button className="generate-button" onClick={onRegenerate}>
             Regenerate Itinerary
           </button>
+        </div>
+      </div>
+
+      {/* Right side - Map */}
+      <div className="itinerary-map-container">
+        <div className="map-wrapper">
+          <ItineraryMap
+            selectedCities={selectedCities}
+            generatedItinerary={generatedItinerary}
+          />
         </div>
       </div>
     </div>

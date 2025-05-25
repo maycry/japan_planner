@@ -5,7 +5,6 @@
   align-items: center;
   justify-content: center;
   background-color: #f8fafc;
-  padding: 2rem 1rem 120px 1rem;
 }
 
 .preferences-container {
@@ -507,7 +506,6 @@
   display: flex;
   align-items: center;
   padding: 1rem 1.5rem;
-  background: #f9fafb;
   overflow: hidden;
   justify-content: flex-start;
   width: 100%;
@@ -964,6 +962,127 @@
 
   .activity-description {
     margin-left: 0.5rem;
+  }
+}
+
+/* Split Screen Layout for Itinerary */
+.itinerary-container.split-screen {
+  max-width: 100vw;
+  width: 100vw;
+  height: 100vh;
+  border-radius: 0;
+  padding: 0;
+  display: flex;
+  box-shadow: none;
+}
+
+.itinerary-content-left {
+  flex: 1;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 2rem;
+  background: white;
+  border-right: 1px solid #e5e7eb;
+}
+
+.itinerary-map-container {
+  flex: 1;
+  height: 100vh;
+  background: #f8fafc;
+  display: flex;
+  flex-direction: column;
+}
+
+.map-header {
+  padding: 1.5rem 2rem 1rem 2rem;
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: center;
+}
+
+.map-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0 0 0.5rem 0;
+}
+
+.map-subtitle {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin: 0;
+}
+
+.map-wrapper {
+  flex: 1;
+  position: relative;
+}
+
+.itinerary-map {
+  height: 100%;
+  width: 100%;
+}
+
+/* Map popup styles */
+.map-popup h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.map-popup p {
+  margin: 0.25rem 0;
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+/* Leaflet map container fixes */
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+}
+
+.leaflet-control-container {
+  font-family: inherit;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.leaflet-popup-content {
+  margin: 12px 16px;
+  font-family: inherit;
+}
+
+/* Mobile responsive for split screen */
+@media (max-width: 768px) {
+  .itinerary-container.split-screen {
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  .itinerary-content-left {
+    flex: 1;
+    height: 50vh;
+    border-right: none;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .itinerary-map-container {
+    flex: 1;
+    height: 50vh;
+  }
+
+  .map-header {
+    padding: 1rem;
+  }
+
+  .map-title {
+    font-size: 1.25rem;
   }
 }
 
