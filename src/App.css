@@ -431,7 +431,7 @@
   transition: all 0.2s ease;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 1rem;
 }
 
 .activity-card:hover {
@@ -451,7 +451,7 @@
 
 .activity-content {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex: 1;
 }
 
@@ -459,7 +459,6 @@
   font-size: 1rem;
   font-weight: 600;
   color: #1f2937;
-  margin-bottom: 0.5rem;
   line-height: 1.4;
 }
 
@@ -525,6 +524,7 @@
   transition: all 0.2s ease;
   position: relative;
   margin-left: -12px;
+  overflow: hidden;
 }
 
 .activity-preview-card:first-child {
@@ -547,6 +547,10 @@
   color: white;
   font-size: 0.75rem;
   font-weight: 600;
+}
+
+.activity-preview-photo img {
+  height: 100%;
 }
 
 .activity-preview-more {
@@ -1091,6 +1095,17 @@
   background: #f3f4f6;
 }
 
+.activities-list .activity-photo img,
+.activities-list .activity-photo {
+  width: 100%;
+}
+
+.activity-content-rows {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
 .activity-photo img {
   width: 100%;
   height: 100%;
@@ -1128,7 +1143,6 @@
   font-size: 1.1rem;
   font-weight: 600;
   color: #1f2937;
-  margin-bottom: 0.5rem;
   line-height: 1.3;
   text-align: left;
 }
@@ -1265,6 +1279,7 @@
   backdrop-filter: blur(10px);
   background: rgba(255, 255, 255, 0.1);
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: #fff;
 }
 
 .header-content {
@@ -1274,6 +1289,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #fff;
 }
 
 .logo-placeholder .logo-box {
@@ -1291,7 +1307,7 @@
 }
 
 .nav-link {
-  color: white;
+  color: gray;
   text-decoration: none;
   font-weight: 500;
   transition: opacity 0.3s ease;

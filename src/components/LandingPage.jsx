@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import FynoLogo from "../assets/fyno.svg";
 
 function LandingPage({ onStartPlanning }) {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -20,7 +21,9 @@ function LandingPage({ onStartPlanning }) {
       <header className="landing-header">
         <div className="header-content">
           <div className="logo-placeholder">
-            <div className="logo-box">Your Logo</div>
+            <div className="logo-box">
+              <img src={FynoLogo} alt="Fyno" />
+            </div>
           </div>
           <nav className="header-nav">
             <a href="#features" className="nav-link">
@@ -35,10 +38,7 @@ function LandingPage({ onStartPlanning }) {
 
       <main className="hero-section">
         <div className="hero-content">
-          <h1 className="hero-title">
-            Plan Your Perfect
-            <span className="title-highlight"> Japan Adventure</span>
-          </h1>
+          <h1 className="hero-title">Plan Your Perfect Japan Adventure</h1>
 
           <p className="hero-subtitle">
             Create a personalized itinerary for your dream trip to Japan. From
@@ -64,11 +64,6 @@ function LandingPage({ onStartPlanning }) {
               <span className="feature-icon">📅</span>
               <span className="feature-text">Day-by-Day</span>
             </div>
-          </div>
-
-          <div className="scroll-indicator">
-            <div className="scroll-text">Scroll to explore</div>
-            <div className="scroll-arrow">↓</div>
           </div>
         </div>
 

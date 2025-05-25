@@ -257,8 +257,15 @@ function ActivitiesStep({
                             />
                           </div>
                           <div className="activity-content">
-                            <div className="activity-name">{activity.name}</div>
-                            <div className="activity-type">{activity.type}</div>
+                            <div className="activity-content-rows">
+                              <div className="activity-name">
+                                {activity.name}
+                              </div>
+                              <div className="activity-type">
+                                {activity.type}
+                              </div>
+                            </div>
+
                             <button
                               className={`activity-toggle ${
                                 activity.selected ? "selected" : ""
