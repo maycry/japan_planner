@@ -1058,6 +1058,39 @@
   font-family: inherit;
 }
 
+/* Dynamic marker styles */
+.city-marker {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.active-city-marker {
+  transition: all 0.3s ease;
+  cursor: pointer;
+  z-index: 1000 !important;
+}
+
+.city-marker:hover,
+.active-city-marker:hover {
+  filter: brightness(1.1);
+  transform: scale(1.1);
+}
+
+/* Map popup enhancements */
+.map-popup .click-hint {
+  font-style: italic;
+  color: #3b82f6;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+/* Scroll container for itinerary */
+.generated-itinerary-content {
+  max-height: calc(100vh - 300px);
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
 /* Mobile responsive for split screen */
 @media (max-width: 768px) {
   .itinerary-container.split-screen {

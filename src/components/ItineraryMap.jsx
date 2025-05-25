@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useMemo } from "react";
 import {
   MapContainer,
   TileLayer,
@@ -21,22 +21,73 @@ L.Icon.Default.mergeOptions({
     "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
 });
 
-// Custom icon for cities
-const cityIcon = new L.Icon({
-  iconUrl:
-    "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png",
-  iconRetinaUrl:
-    "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png",
-  shadowUrl:
-    "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowSize: [41, 41],
-});
+// Custom icon factory for cities with dynamic sizing
+const createCityIcon = (isActive = false, cityIndex = 0) => {
+  const baseSize = isActive ? 35 : 25;
+  const shadowSize = isActive ? 51 : 41;
 
-function ItineraryMap({ selectedCities, generatedItinerary }) {
+  return new L.Icon({
+    iconUrl: isActive
+      ? "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png"
+      : "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png",
+    iconRetinaUrl: isActive
+      ? "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png"
+      : "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png",
+    shadowUrl:
+      "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
+    iconSize: [baseSize, Math.round(baseSize * 1.64)], // Maintain aspect ratio
+    iconAnchor: [Math.round(baseSize / 2), Math.round(baseSize * 1.64)],
+    popupAnchor: [1, -Math.round(baseSize * 1.2)],
+    shadowSize: [shadowSize, shadowSize],
+    className: isActive ? "active-city-marker" : "city-marker",
+  });
+};
+
+function ItineraryMap({
+  selectedCities,
+  generatedItinerary,
+  activeCityIndex = 0,
+  onCityClick,
+}) {
   const mapRef = useRef();
+
+  // Custom marker component for handling clicks
+  const ClickableMarker = ({ position, cityIndex, isActive, cityInfo }) => {
+    const markerRef = useRef();
+
+    const handleClick = () => {
+      if (onCityClick) {
+        onCityClick(cityIndex);
+      }
+    };
+
+    const icon = useMemo(
+      () => createCityIcon(isActive, cityIndex),
+      [isActive, cityIndex]
+    );
+
+    return (
+      <Marker
+        ref={markerRef}
+        position={position}
+        icon={icon}
+        eventHandlers={{
+          click: handleClick,
+        }}
+      >
+        <Popup>
+          <div className="map-popup">
+            <h3>{cityInfo.name}</h3>
+            <p>Stop #{cityIndex + 1}</p>
+            <p>
+              {cityInfo.days} day{cityInfo.days !== 1 ? "s" : ""}
+            </p>
+            <p className="click-hint">Click marker to scroll to itinerary</p>
+          </div>
+        </Popup>
+      </Marker>
+    );
+  };
 
   // Get coordinates for each city in the order they appear in the itinerary
   const getCityRouteCoordinates = () => {
@@ -133,17 +184,16 @@ function ItineraryMap({ selectedCities, generatedItinerary }) {
 
       {/* City markers */}
       {routeCoordinates.map((city, index) => (
-        <Marker key={city.name} position={city.coordinates} icon={cityIcon}>
-          <Popup>
-            <div className="map-popup">
-              <h3>{city.name}</h3>
-              <p>Stop #{index + 1}</p>
-              <p>
-                {city.days} day{city.days !== 1 ? "s" : ""}
-              </p>
-            </div>
-          </Popup>
-        </Marker>
+        <ClickableMarker
+          key={city.name}
+          position={city.coordinates}
+          cityIndex={index}
+          isActive={index === activeCityIndex}
+          cityInfo={{
+            name: city.name,
+            days: city.days,
+          }}
+        />
       ))}
 
       {/* Route line connecting cities */}

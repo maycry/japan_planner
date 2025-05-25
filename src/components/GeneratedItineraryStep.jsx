@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import ItineraryMap from "./ItineraryMap";
 
 // Helper function to get hotel photos based on category and city
@@ -172,6 +172,63 @@ function GeneratedItineraryStep({
   onBack,
   onRegenerate,
 }) {
+  const [activeCityIndex, setActiveCityIndex] = useState(0);
+  const scrollContainerRef = useRef(null);
+  const cityRefs = useRef([]);
+
+  // Function to scroll to a specific city
+  const scrollToCity = useCallback((cityIndex) => {
+    if (cityRefs.current[cityIndex] && scrollContainerRef.current) {
+      cityRefs.current[cityIndex].scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "nearest",
+      });
+    }
+  }, []);
+
+  // Scroll detection to track active city
+  useEffect(() => {
+    const scrollContainer = scrollContainerRef.current;
+    if (!scrollContainer) {
+      return;
+    }
+
+    const handleScroll = () => {
+      const scrollTop = scrollContainer.scrollTop;
+      const containerHeight = scrollContainer.clientHeight;
+      const scrollCenter = scrollTop + containerHeight / 2;
+
+      // Find which city section is most visible
+      let activeIndex = 0;
+      let minDistance = Infinity;
+
+      cityRefs.current.forEach((cityRef, index) => {
+        if (cityRef) {
+          // Get position relative to the scroll container
+          const cityTop = cityRef.offsetTop - scrollContainer.offsetTop;
+          const cityHeight = cityRef.offsetHeight;
+          const cityCenter = cityTop + cityHeight / 2;
+          const distance = Math.abs(scrollCenter - cityCenter);
+
+          if (distance < minDistance) {
+            minDistance = distance;
+            activeIndex = index;
+          }
+        }
+      });
+
+      setActiveCityIndex(activeIndex);
+    };
+
+    scrollContainer.addEventListener("scroll", handleScroll);
+    handleScroll(); // Initial call
+
+    return () => {
+      scrollContainer.removeEventListener("scroll", handleScroll);
+    };
+  }, [generatedItinerary]);
+
   // Get activity photo with proper type information
   const getActivityPhotoWithType = (activityName, cityName) => {
     const city = selectedCities.find((c) => c.name === cityName);
@@ -232,7 +289,12 @@ function GeneratedItineraryStep({
 
         {data.cities &&
           data.cities.map((city, cityIndex) => (
-            <div key={cityIndex} className="timeline-city-section">
+            <div
+              key={cityIndex}
+              className="timeline-city-section"
+              ref={(el) => (cityRefs.current[cityIndex] = el)}
+              data-city-index={cityIndex}
+            >
               {/* City title */}
               <div className="timeline-city-title">{city.name}</div>
 
@@ -394,7 +456,7 @@ function GeneratedItineraryStep({
               Your Complete Travel Plan
             </h2>
           </div>
-          <div className="generated-itinerary-content">
+          <div className="generated-itinerary-content" ref={scrollContainerRef}>
             <div className="itinerary-text">
               {formatItinerary(generatedItinerary)}
             </div>
@@ -417,6 +479,8 @@ function GeneratedItineraryStep({
           <ItineraryMap
             selectedCities={selectedCities}
             generatedItinerary={generatedItinerary}
+            activeCityIndex={activeCityIndex}
+            onCityClick={scrollToCity}
           />
         </div>
       </div>
