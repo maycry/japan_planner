@@ -9,6 +9,6 @@ export const OPENAI_API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
 // OpenAI API configuration
 export const OPENAI_CONFIG = {
   model: "gpt-4o-mini", // Cost-effective model, you can change to "gpt-4" for better quality
-  max_tokens: 2000,
+  max_tokens: 5000, // Increased for larger itineraries with multiple cities
   temperature: 0.7,
 };
