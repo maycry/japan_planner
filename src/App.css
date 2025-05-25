@@ -754,6 +754,7 @@
   border-radius: 16px;
   border: 1px solid #e5e7eb;
   overflow: hidden;
+  text-align: left;
 }
 
 .generated-itinerary-header {
@@ -1028,7 +1029,7 @@
 
 .timeline-activity-card {
   display: flex;
-  align-items: flex-start;
+  align-items: stretch;
   margin-bottom: 1.5rem;
   position: relative;
 }
@@ -1059,11 +1060,12 @@
 
 .timeline-line {
   width: 2px;
-  height: 40px;
   background: #e5e7eb;
   margin-top: 8px;
   position: relative;
   z-index: 1;
+  flex: 1;
+  min-height: 40px;
 }
 
 .activity-card-content {
@@ -1214,7 +1216,7 @@
   }
 
   .timeline-line {
-    height: 30px;
+    flex: 1;
     margin-top: 6px;
   }
 
