@@ -121,7 +121,7 @@ Requirements:
     try {
       const prompt = generatePrompt();
       const response = await callOpenAI(prompt);
-      
+
       // Parse JSON response
       const parsedItinerary = JSON.parse(response);
       onGenerateItinerary(parsedItinerary);
