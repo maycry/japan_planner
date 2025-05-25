@@ -76,7 +76,7 @@ Please create an itinerary in JSON format with the following structure:
       "days": [
         {
           "day": 1,
-          "title": "Day Theme Title",
+          "title": "Day Theme Title Summarizing day activities",
           "activities": [
             {
               "time": "Morning",
@@ -100,8 +100,7 @@ Please create an itinerary in JSON format with the following structure:
 
 Requirements:
 - Use GLOBAL day numbering across the entire trip (Day 1, 2, 3... up to ${totalDays}) NOT per-city numbering
-- Each day must have a "title" field with a short thematic title (5-7 words) that summarizes the day's activities
-- Day titles should reflect the main theme/focus of that day
+- Each day must have a "title" field with thematic title (5-7 words) that summarizes the day's activities
 - Use the selected activities for each city
 - Distribute activities logically across the allocated days
 - Consider travel preferences when organizing activities
@@ -218,48 +217,6 @@ Requirements:
     // Generate a realistic sample itinerary based on the data in JSON format
     const citiesData = selectedCities;
     let globalDayCounter = 1;
-
-    // Helper function to generate day titles based on activities
-    const generateDayTitle = (activities, isArrivalDay = false) => {
-      if (isArrivalDay) return "Arrival Day";
-      if (!activities || activities.length === 0) return "Free Exploration";
-
-      const activityNames = activities
-        .map((a) => a.name.toLowerCase())
-        .join(" ");
-      if (activityNames.includes("temple") || activityNames.includes("shrine"))
-        return "Sacred Spaces";
-      if (
-        activityNames.includes("market") ||
-        activityNames.includes("food") ||
-        activityNames.includes("cooking")
-      )
-        return "Culinary Discovery";
-      if (
-        activityNames.includes("castle") ||
-        activityNames.includes("historical") ||
-        activityNames.includes("museum")
-      )
-        return "Historical Journey";
-      if (
-        activityNames.includes("park") ||
-        activityNames.includes("nature") ||
-        activityNames.includes("bamboo")
-      )
-        return "Nature Escape";
-      if (
-        activityNames.includes("shopping") ||
-        activityNames.includes("district") ||
-        activityNames.includes("harajuku")
-      )
-        return "Modern Culture";
-      if (
-        activityNames.includes("island") ||
-        activityNames.includes("miyajima")
-      )
-        return "Island Adventure";
-      return "Cultural Experience";
-    };
 
     // Helper function to generate hotels for each city
     const generateHotelsForCity = (cityName) => {
@@ -485,7 +442,7 @@ Requirements:
           if (dayActivities.length === 0) {
             // Add some generic activities for empty days
             if (day === 1) {
-              dayData.title = generateDayTitle([], true);
+              dayData.title = "Arrival Day";
               dayData.activities = [
                 {
                   time: "Morning",
@@ -500,7 +457,7 @@ Requirements:
                 },
               ];
             } else {
-              dayData.title = generateDayTitle([]);
+              dayData.title = "Free Exploration";
               dayData.activities = [
                 {
                   time: "Morning",
@@ -516,7 +473,7 @@ Requirements:
               ];
             }
           } else {
-            dayData.title = generateDayTitle(dayActivities, day === 1);
+            dayData.title = day === 1 ? "Arrival Day" : "Cultural Experience";
             dayActivities.forEach((activity, actIndex) => {
               const timeSlots = ["Morning", "Afternoon", "Evening"];
               const timeSlot = timeSlots[actIndex % timeSlots.length];
