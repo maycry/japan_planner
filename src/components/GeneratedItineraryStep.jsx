@@ -1,6 +1,33 @@
 import React from "react";
 import ItineraryMap from "./ItineraryMap";
 
+// Helper function to get hotel photos based on category and city
+const getHotelPhoto = (hotelName, category, cityName) => {
+  // Hotel-specific photos
+  const hotelPhotos = {
+    "Shibuya Sky Hotel": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=300&h=200&fit=crop&auto=format&q=80",
+    "Tokyo Bay Marriott": "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=300&h=200&fit=crop&auto=format&q=80",
+    "Capsule Inn Akihabara": "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=300&h=200&fit=crop&auto=format&q=80",
+    "Park Hyatt Tokyo": "https://images.unsplash.com/photo-1549294413-26f195200c16?w=300&h=200&fit=crop&auto=format&q=80",
+    "Ryokan Asakusa": "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=300&h=200&fit=crop&auto=format&q=80",
+    "Gion Nanba": "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=300&h=200&fit=crop&auto=format&q=80",
+    "The Ritz-Carlton Kyoto": "https://images.unsplash.com/photo-1549294413-26f195200c16?w=300&h=200&fit=crop&auto=format&q=80"
+  };
+
+  if (hotelPhotos[hotelName]) {
+    return hotelPhotos[hotelName];
+  }
+
+  // Category-based photos
+  const categoryPhotos = {
+    "Budget": "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=300&h=200&fit=crop&auto=format&q=80",
+    "Mid-range": "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=300&h=200&fit=crop&auto=format&q=80",
+    "Luxury": "https://images.unsplash.com/photo-1549294413-26f195200c16?w=300&h=200&fit=crop&auto=format&q=80"
+  };
+
+  return categoryPhotos[category] || "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=300&h=200&fit=crop&auto=format&q=80";
+};
+
 // Helper function to get activity photos
 const getActivityPhotoByType = (name, type) => {
   // Map activity names to specific Unsplash photos
@@ -264,6 +291,41 @@ function GeneratedItineraryStep({
                     </div>
                   ))}
               </div>
+
+              {/* Hotels section for this city */}
+              {city.hotels && city.hotels.length > 0 && (
+                <div className="hotels-section">
+                  <div className="hotels-title">
+                    <h3>Recommended Hotels in {city.name}</h3>
+                    <p>Choose from budget-friendly to luxury accommodations</p>
+                  </div>
+                  <div className="hotels-scroll-container">
+                    <div className="hotels-grid">
+                      {city.hotels.map((hotel, hotelIndex) => (
+                        <div key={hotelIndex} className="hotel-card">
+                          <div className="hotel-photo">
+                            <img
+                              src={getHotelPhoto(hotel.name, hotel.category, city.name)}
+                              alt={hotel.name}
+                              onError={(e) => {
+                                e.target.src = "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=300&h=200&fit=crop&auto=format&q=80";
+                              }}
+                            />
+                            <div className={`hotel-category-tag ${hotel.category.toLowerCase().replace(/[^a-z]/g, '')}`}>
+                              {hotel.category}
+                            </div>
+                          </div>
+                          <div className="hotel-info">
+                            <div className="hotel-name">{hotel.name}</div>
+                            <div className="hotel-price">{hotel.priceRange}</div>
+                            <div className="hotel-description">{hotel.description}</div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           ))}
       </div>
