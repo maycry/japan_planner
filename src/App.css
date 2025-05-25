@@ -1139,6 +1139,21 @@
   color: #374151;
   margin-bottom: 1rem;
   padding-left: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.day-number {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.day-theme {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1f2937;
 }
 
 .timeline-activities {
@@ -1317,6 +1332,14 @@
   .timeline-day-title {
     font-size: 1.125rem;
     margin-bottom: 0.75rem;
+  }
+
+  .day-number {
+    font-size: 1.125rem;
+  }
+
+  .day-theme {
+    font-size: 0.875rem;
   }
 
   .timeline-activities {

@@ -111,7 +111,7 @@ function ItineraryMap({ selectedCities, generatedItinerary }) {
         subdomains="abcd"
         maxZoom={20}
       />
-      
+
       {/* Alternative English tile layers (uncomment to use):
       
       // Option 1: CartoDB Light (minimal style with English labels)

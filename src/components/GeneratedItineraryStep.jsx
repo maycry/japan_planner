@@ -201,7 +201,12 @@ function GeneratedItineraryStep({
                 {city.days &&
                   city.days.map((day, dayIndex) => (
                     <div key={dayIndex} className="timeline-day-section">
-                      <div className="timeline-day-title">Day {day.day}</div>
+                      <div className="timeline-day-title">
+                        <span className="day-number">Day {day.day}</span>
+                        {day.title && (
+                          <span className="day-theme">{day.title}</span>
+                        )}
+                      </div>
 
                       {/* Activities timeline */}
                       <div className="timeline-activities">
